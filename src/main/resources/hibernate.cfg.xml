@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- DB Connection Settings -->
+        <!--<property name="connection.driver_class">org.h2.Driver</property>-->
+        <!--<property name="connection.url">jdbc:h2:file:/tmp/testdb;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>-->
+        <!--<property name="connection.url">jdbc:h2:tcp://localhost:9092/tmp/testdb;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>-->
+        <!--<property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>-->
+        <!--<property name="connection.username">sa</property>
+        <property name="connection.password" />-->
+
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/testdb?serverTimezone=Europe/Berlin</property>
+        <property name="connection.username">testuser</property>
+        <property name="connection.password">123</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">10</property>
+
+        <!-- SQL Dialect -->
+        <!--<property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
+        <property name="dialect">org.hibernate.dialect.MariaDBDialect</property>
+
+        <!-- Disable second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+        <!--<property name="hbm2ddl.auto">create</property>-->
+
+        <!-- Debug -->
+        <!-- Echo all executed SQL queries to stdout -->
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+
+        <!-- mappings -->
+        <!--<mapping class="com.ripstech.coffeecup.database.AppExternalType" />-->
+    </session-factory>
+</hibernate-configuration>
